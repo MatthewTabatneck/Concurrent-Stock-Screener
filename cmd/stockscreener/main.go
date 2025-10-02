@@ -13,10 +13,12 @@ func main() {
 		fmt.Println("Error opening file: ", err)
 	}
 	defer file.Close()
+
 	tickers, err := tickers.LoadtickersCSV(file)
 	if err != nil {
 		fmt.Println(err)
 	}
+
 	fmt.Println(tickers)
 
 }
