@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	fmt.Println("Hello World!")
+	tickers, err := loadtickersCSV("sp500_tickers.csv")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(tickers)
+
 }
