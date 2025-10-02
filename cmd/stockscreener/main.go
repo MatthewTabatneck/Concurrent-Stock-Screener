@@ -11,12 +11,14 @@ func main() {
 	file, err := os.Open("sp500_tickers.csv")
 	if err != nil {
 		fmt.Println("Error opening file: ", err)
+		return
 	}
 	defer file.Close()
 
 	tickers, err := tickers.LoadtickersCSV(file)
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Println(tickers)

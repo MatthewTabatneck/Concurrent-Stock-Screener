@@ -2,6 +2,7 @@ package tickers
 
 import (
 	"encoding/csv"
+	"errors"
 	"io"
 	"strings"
 )
@@ -14,6 +15,10 @@ func LoadtickersCSV(r io.Reader) ([]string, error) {
 		return nil, err
 	}
 
+	//ends program early if the csv is empty
+	if len(records) == 0 {
+		return nil, errors.New("input cannot be empty")
+	}
 	seen := make(map[string]struct{}, len(records))
 
 	for _, rec := range records {
