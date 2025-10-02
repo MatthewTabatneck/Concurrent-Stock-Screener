@@ -15,6 +15,7 @@ func LoadtickersCSV(r io.Reader) ([]string, error) {
 	}
 
 	seen := make(map[string]struct{}, len(records))
+
 	for _, rec := range records {
 		if len(rec) == 0 {
 			continue
