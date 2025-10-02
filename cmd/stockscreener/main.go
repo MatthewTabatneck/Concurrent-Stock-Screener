@@ -2,10 +2,17 @@ package main
 
 import (
 	"fmt"
+	"os"
+
+	"github.com/MatthewTabatneck/Concurrent-Stock-Screener/internal/tickers"
 )
 
 func main() {
-	tickers, err := loadtickersCSV("sp500_tickers.csv")
+	file, err := os.Open("sp500_tickers.csv")
+	if err != nil {
+		fmt.Println("Error opening file: ", err)
+	}
+	tickers, err := tickers.LoadtickersCSV(file)
 	if err != nil {
 		fmt.Println(err)
 	}
