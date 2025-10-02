@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// func will read  csv file, store those values into a struct to get rid of duplicates, then transform into a []string for use
 func LoadtickersCSV(r io.Reader) ([]string, error) {
 	cr := csv.NewReader(r)
 	records, err := cr.ReadAll()
@@ -23,7 +24,7 @@ func LoadtickersCSV(r io.Reader) ([]string, error) {
 			continue
 		}
 		sym = strings.ToUpper(sym)
-		seen[sym] = struct{}{} // set membership (zero-size value)
+		seen[sym] = struct{}{} //sets tickers into struct and skips duplicates
 	}
 
 	// Emit final []string (order is arbitrary)
